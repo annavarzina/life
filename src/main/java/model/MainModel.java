@@ -17,6 +17,8 @@ public class MainModel {
     private int width;
     private int height;
 
+    int aliveCells;
+
     public MainModel(int width, int height){
         this.width = width;
         this.height = height;
@@ -24,6 +26,7 @@ public class MainModel {
         // set initial state for the hashmaps
         setInitialZeroState(currentCellStateMap);
         setNextCellStateMap(currentCellStateMap);
+        aliveCells = computeAliveCells(currentCellStateMap);
         //computeNextIteration();
     }
 
@@ -140,9 +143,11 @@ public class MainModel {
             }
         }
         setNextCellStateMap(map);
+        aliveCells = computeAliveCells(currentCellStateMap);
+        Score.setPoints(aliveCells);
         //setNextCellStateMap(nextCellStateMap);
-        System.out.println("Current cells: " + computeAliveCells(currentCellStateMap));
-        System.out.println("Next cells: " + computeAliveCells(nextCellStateMap));
+       // System.out.println("Current cells: " + computeAliveCells(currentCellStateMap));
+        //System.out.println("Next cells: " + computeAliveCells(nextCellStateMap));
     }
 
     // getters

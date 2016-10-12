@@ -1,6 +1,7 @@
 package controller;
 
 import model.MainModel;
+import model.Score;
 import view.MainView;
 
 import javax.swing.*;
@@ -30,8 +31,9 @@ public class StartButtonController implements ActionListener{
                                 MainController.LOCK.notifyAll();
                                 model.computeNextIteration();
                                 model.newIteration();
+                                MainController.getView().setScoreText();
                                 repaint();
-                                System.out.println(++timer);
+                                //System.out.println(++timer + " score: " + Score.getPoints());
                                 try {
                                     lifeThread.sleep(4000);
                                 } catch (InterruptedException e) {

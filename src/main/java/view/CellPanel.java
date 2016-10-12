@@ -1,6 +1,7 @@
 package view;
 
 import controller.MainController;
+import model.Score;
 
 import javax.swing.*;
 import java.awt.*;
@@ -29,17 +30,18 @@ public class CellPanel extends JPanel{
             public void mouseClicked(MouseEvent e){
                 if (getBackground() == Color.GREEN){
                     setBackground(defaultBackground);
-                    //System.out.println("GRAY: " + row +' ' + col);
                     setCurrentCellState(MainController.getModel().getCurrentCellStateMap());
                     putKeyValue(currentCellState,new Point(row,col),false);
                     MainController.getModel().setCurrentCellStateMap(currentCellState);
+                    Score.decrementPoint();
+                    MainController.getView().setScoreText();
                 } else {
-                    //defaultBackground = getBackground();
                     setBackground(Color.GREEN);
-                    //System.out.println("Green: " + row +' ' + col);
                     setCurrentCellState(MainController.getModel().getCurrentCellStateMap());
                     putKeyValue(currentCellState,new Point(row,col),true);
                     MainController.getModel().setCurrentCellStateMap(currentCellState);
+                    Score.incrementPoint();
+                    MainController.getView().setScoreText();
                 }
             }
 

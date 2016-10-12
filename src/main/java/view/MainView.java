@@ -1,13 +1,16 @@
 package view;
 
+import model.Score;
+
 import javax.swing.*;
-import java.awt.*;
-import java.util.HashMap;
+import java.text.NumberFormat;
 
 /**
  * Created by annav on 09.10.2016.
  */
 public class MainView {
+
+    private static final NumberFormat NF = NumberFormat.getInstance();
     private BoardPanel boardPanel;
     private ControlPanel controlPanel;
     private JFrame frame;
@@ -50,7 +53,10 @@ public class MainView {
 
     //setters
 
-
+    //is needed for GameController class
+    public void setScoreText() {
+        controlPanel.setScoreText(NF.format(Score.getPoints()));
+    }
 
 
 }

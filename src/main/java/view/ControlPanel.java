@@ -45,13 +45,9 @@ public class ControlPanel extends JPanel{
                 GridBagConstraints.CENTER, GridBagConstraints.HORIZONTAL);
 
         startButton = new JButton("Start");
-
-        //startButton.addActionListener(new StartButtonController());
         addComponent(innerPanel, startButton, 0, gridy++, 1, 1, normalInsets,
                 GridBagConstraints.CENTER, GridBagConstraints.HORIZONTAL);
         pauseButton = new JToggleButton("Pause");
-
-        //pauseButton.addActionListener(new PauseButtonController());
         addComponent(innerPanel, pauseButton, 0, gridy++, 1, 1, normalInsets,
                 GridBagConstraints.CENTER, GridBagConstraints.HORIZONTAL);
 
