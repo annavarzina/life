@@ -1,5 +1,6 @@
 package view;
 
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -45,7 +46,7 @@ public class ControlPanel extends JPanel{
 
         startButton = new JButton("Start");
 
-        //startButton.addActionListener(new StartButtonController(frame));
+        //startButton.addActionListener(new StartButtonController());
         addComponent(innerPanel, startButton, 0, gridy++, 1, 1, normalInsets,
                 GridBagConstraints.CENTER, GridBagConstraints.HORIZONTAL);
         pauseButton = new JToggleButton("Pause");

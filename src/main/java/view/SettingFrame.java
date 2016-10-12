@@ -60,13 +60,13 @@ public class SettingFrame extends JFrame{
                 dispose();
                 try{
                     new InputData.Builder().setGridHeight(height).setGridWidth(width).build();
-                    if ((InputData.getGridWidth() < 10) || (InputData.getGridWidth() > 30) ) {
-                        JOptionPane.showMessageDialog(new JFrame(), "Please try again and enter the width between 10 and 30.");
+                    if ((InputData.getGridWidth() < 2) || (InputData.getGridWidth() > 30) ) {
+                        JOptionPane.showMessageDialog(new JFrame(), "Please try again and enter the width between 2 and 30.");
                         SettingFrame frame = new SettingFrame();
                         frame.setVisible(true);
                     }
-                    else if ((InputData.getGridHeight() < 10) || (InputData.getGridHeight()>30) ){
-                        JOptionPane.showMessageDialog(new JFrame(), "Please try again and enter the height between 10 and 30.");
+                    else if ((InputData.getGridHeight() < 2) || (InputData.getGridHeight()>30) ){
+                        JOptionPane.showMessageDialog(new JFrame(), "Please try again and enter the height between 2 and 30.");
                         SettingFrame frame = new SettingFrame();
                         frame.setVisible(true);
                     }

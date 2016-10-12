@@ -17,17 +17,18 @@ public class BoardPanel extends JPanel {
     public static final int CANVAS_WIDTH = CELL_SIZE * width; // Game board width/height
     public static final int CANVAS_HEIGHT = CELL_SIZE * height;
 
+    private CellPanel[] cells = new CellPanel[width*height];
 
     public BoardPanel() {
         setLayout(new GridBagLayout());
-
+        // paint a border
         GridBagConstraints gbc = new GridBagConstraints();
-        for (int row = 0; row < height; row++) {
-            for (int col = 0; col < width; col++) {
+        for (int row = 0; row < height; ++row) {
+            for (int col = 0; col < width; ++col) {
                 gbc.gridx = col;
                 gbc.gridy = row;
 
-                CellPanel cellPanel = new CellPanel(row,col);
+                cells[(width*row)+col] = new CellPanel(row,col);
                 Border border = null;
                 if (row < height - 1) {
                     if (col < width -1) {
@@ -42,8 +43,8 @@ public class BoardPanel extends JPanel {
                         border = new MatteBorder(1, 1, 1, 1, Color.GRAY);
                     }
                 }
-                cellPanel.setBorder(border);
-                add(cellPanel, gbc);
+                cells[width*row+col].setBorder(border);
+                add(cells[width*row+col], gbc);
             }
         }
         this.setPreferredSize(getPreferredSize());
@@ -60,5 +61,24 @@ public class BoardPanel extends JPanel {
     // CELLSIZE getter
     public int getCellSize(){
         return CELL_SIZE;
+    }
+
+    public void setCellColor(CellPanel cellPanel, Color color){
+        cellPanel.setBackground(color);
+    }
+
+    public void repaintCells(HashMap<Point,Boolean> cellState){
+        for (int row = 0; row < height; row++) {
+            for (int col = 0; col < width; col++) {
+                Boolean state = cellState.get(new Point(row, col));
+                if (state.equals(true)){
+                    cells[width*row+ col].setBackground(Color.GREEN);
+                }
+                else {
+                    cells[width*row+ col].setBackground(Color.LIGHT_GRAY);
+                }
+                cells[width*row+ col].repaint();
+            }
+        }
     }
 }
